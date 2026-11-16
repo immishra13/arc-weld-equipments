@@ -102,16 +102,21 @@
 
   /* ---------- Hero carousel ---------- */
   var slides = $$(".hero-slide"), dots = $$(".hero-dots button"), cur = 0, timer = null;
-  function showSlide(i) {
-    cur = (i + slides.length) % slides.length;
+  function goTo(i) {
+    cur = ((i % slides.length) + slides.length) % slides.length;
     slides.forEach(function (s, j) { s.classList.toggle("active", j === cur); });
     dots.forEach(function (d, j) { d.classList.toggle("active", j === cur); });
   }
-  function auto() { if (!reduced) timer = setInterval(function () { showSlide(cur + 1); }, 6000); }
-  $("#hero-prev") && $("#hero-prev").addEventListener("click", function () { clearInterval(timer); showSlide(cur - 1); auto(); });
-  $("#hero-next") && $("#hero-next").addEventListener("click", function () { clearInterval(timer); showSlide(cur + 1); auto(); });
-  dots.forEach(function (d, j) { d.addEventListener("click", function () { clearInterval(timer); showSlide(j); auto(); }); });
-  auto();
+  function restartAuto() {
+    clearInterval(timer);
+    if (!reduced) { timer = setInterval(function () { goTo(cur + 1); }, 6000); }
+  }
+  var prevBtn = document.getElementById("hero-prev");
+  var nextBtn = document.getElementById("hero-next");
+  if (prevBtn) { prevBtn.addEventListener("click", function () { goTo(cur - 1); restartAuto(); }); }
+  if (nextBtn) { nextBtn.addEventListener("click", function () { goTo(cur + 1); restartAuto(); }); }
+  dots.forEach(function (d, j) { d.addEventListener("click", function () { goTo(j); restartAuto(); }); });
+  restartAuto();
 
   /* ---------- Counters (Mage-UI counter) ---------- */
   var counters = $$("[data-count]");
@@ -161,7 +166,6 @@
   function cardHTML(p) {
     var cat = catOf(p);
     return '<button class="p-card" data-id="' + p.id + '" type="button">' +
-      '<span class="open-tab">VIEW DETAILS</span>' +
       '<span class="p-series">' + cat.short + ' · ' + p.series + '</span>' +
       '<h4>' + p.name + '</h4>' +
       '<p class="p-tag">' + p.tag + '</p>' +
@@ -237,7 +241,7 @@
       '<img src="' + cat.img + '" alt="' + p.name + ' — ' + cat.name + '">' +
       '<div class="scrim"></div>' +
       '<div class="mh-text"><span class="p-series">' + cat.name + ' · ' + p.series + '</span><h3>' + p.name + '</h3><p>' + p.tag + '</p></div>' +
-      '<button class="modal-close" type="button" aria-label="Close">✕</button></div>' +
+      '<button class="modal-close" type="button" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button></div>' +
       '<div class="modal-body">' +
       '<h5>Salient features</h5><ul class="tick-list">' + p.features.map(function (f) { return "<li>" + f + "</li>"; }).join("") + "</ul>";
     if (p.standard && p.standard.length) {

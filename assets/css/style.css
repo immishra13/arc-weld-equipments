@@ -172,7 +172,8 @@ nav.main a.cta:hover { background: var(--red-dark); }
 .hero-nav { position: absolute; right: 4%; bottom: 34px; display: flex; gap: 10px; z-index: 5; }
 .hero-nav button {
   width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .5);
-  background: rgba(28, 22, 17, .5); color: #fff; font-size: 20px;
+  background: rgba(28, 22, 17, .5); color: #fff;
+  display: flex; align-items: center; justify-content: center;
   transition: background .15s, transform .15s;
 }
 .hero-nav button:hover { background: var(--red); border-color: var(--red); transform: translateY(-2px); }
@@ -185,9 +186,10 @@ nav.main a.cta:hover { background: var(--red-dark); }
 .stats .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 34px 0; }
 .stat { text-align: center; padding: 6px 10px; border-left: 1px solid rgba(255, 255, 255, .25); }
 .stat:first-child { border-left: 0; }
-.stat b { font-family: var(--font-display); font-size: clamp(38px, 4.6vw, 56px); line-height: 1; display: block; }
-.stat b sup { font-size: .55em; color: var(--amber); }
-.stat span { font-size: 14.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .92; }
+.stat b { display: flex; align-items: baseline; justify-content: center; gap: 3px; font-family: var(--font-display); font-size: clamp(38px, 4.6vw, 56px); line-height: 1; }
+.stat .num { font-size: inherit; }
+.stat .suffix { font-size: .55em; color: var(--amber); line-height: 1; }
+.stat .lbl { display: block; font-size: 14.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .92; margin-top: 6px; }
 
 /* ---------- Products ---------- */
 .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
@@ -225,19 +227,12 @@ nav.main a.cta:hover { background: var(--red-dark); }
   font: inherit; color: inherit; display: block;
 }
 .p-card:hover, .p-card:focus-visible { transform: perspective(900px) rotateY(-7deg) translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--red); outline: none; }
-.p-card .open-tab {
-  position: absolute; top: 16px; right: -11px; z-index: -1;
-  background: var(--red); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .16em;
-  padding: 7px 12px 7px 18px; border-radius: 0 8px 8px 0;
-  transform: translateX(-6px) rotate(2deg); opacity: 0; transition: all .3s var(--ease-out);
-}
-.p-card:hover .open-tab, .p-card:focus-visible .open-tab { transform: translateX(0) rotate(0); opacity: 1; }
 .p-card .p-series { font-size: 12.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
 .p-card h4 { font-family: var(--font-display); font-size: 25px; line-height: 1.08; margin: 7px 0 8px; }
 .p-card .p-tag { font-size: 14.5px; color: var(--muted); min-height: 44px; }
 .p-card .p-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 13px; border-top: 1px dashed var(--line); }
-.p-card .p-foot b { color: var(--red); font-size: 14.5px; }
-.p-card .p-foot b:hover { text-decoration: underline; }
+.p-card .p-foot b { color: var(--red); font-size: 14.5px; transition: background .18s var(--ease-out), color .18s var(--ease-out); border-radius: 999px; padding: 7px 13px; margin: -7px -13px; }
+.p-card:hover .p-foot b, .p-card:focus-visible .p-foot b { background: var(--red); color: #fff; text-decoration: none; }
 .p-card .p-foot span { font-size: 13px; color: var(--muted); font-weight: 600; }
 .no-results { display: none; text-align: center; padding: 48px 20px; color: var(--muted); }
 .no-results.show { display: block; }
@@ -265,7 +260,8 @@ nav.main a.cta:hover { background: var(--red-dark); }
 .modal-close {
   position: absolute; top: 16px; right: 16px; z-index: 2;
   width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(28, 22, 17, .65); color: #fff;
-  font-size: 20px; line-height: 1; transition: background .15s, transform .15s;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s;
 }
 .modal-close:hover { background: var(--red); transform: scale(1.06); }
 .modal-body { padding: 28px; }
