@@ -1,0 +1,43 @@
+# Arc Weld Equipments Pvt Ltd — Website
+
+Rebuilt website for **Arc Weld Equipments Pvt Ltd**, Sakinaka, Mumbai — manufacturer of welding and cutting machines. Built 16 Nov 2026 for Ankur Mishra (client order, not a demo).
+
+- **Live site:** https://immishra13.github.io/arc-weld-equipments/
+- **Company site:** https://arcweld.in/
+- **Stack:** plain HTML/CSS/JS only — no build step, no backend. Hosted free on GitHub Pages.
+
+## What's inside
+
+- `index.html` — full single-page site: hero carousel, stats, product catalogue, about, why us, industries, support, FAQ, enquiry form, contact + map, footer.
+- `assets/js/products.js` — all 40 products in 8 categories, with features and specifications taken only from arcweld.in.
+- `assets/js/main.js` — preloader, cursor effects, split-text hero, counters, catalogue search/filter, product detail modal, tabs, accordion, form validation.
+- `assets/css/style.css` — warm industrial design system (brand red, amber, charcoal, warm paper).
+- `assets/images/` — 11 generated images + the company's real logo (`logo.png`, from arcweld.in).
+- `sitemap.xml`, `robots.txt` — SEO.
+
+## Facts & decisions (all verified from arcweld.in, 16 Nov 2026)
+
+- Official email: **info@arcweld.in** — the enquiry form composes an email to it (mailto; no server on GitHub Pages).
+- Phone: 022 2859 1639 / 022 2859 6611; mobiles +91 98201 63252 / +91 99201 63252.
+- Address: 5, Patel Industrial Estate, Near Safed Pool Bus Stop, Safed Pool, Sakinaka, Mumbai 400072.
+- Hours used: Mon–Sat 9:00 AM – 6:00 PM, Sunday closed (from the site's Contact page).
+- No WhatsApp CTA anywhere — the 022 number is a landline.
+- No invented reviews, clients, prices or claims. Products without a published spec table say so and offer the full sheet on request.
+- Column & Boom and Cold Wire Feeder pages on the old site are empty — those two products show "details on request".
+
+## Conflicts found on the old site (flagged to the client)
+
+1. Working hours: footer says 9:30 am–6:30 pm; Contact page says 9:00 AM–6:00 PM. This build uses the Contact-page hours.
+2. Experience: hero says 30+ years; one feature box says 10+ years. This build uses 30+ years.
+3. The old site's "Current at 60%" cell for ARC 800 reads "ARC 800 AMP" (a typo); 800 A follows the model-number pattern and is confirmed by the CAG 800 row.
+
+## Run locally
+
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000/
+```
+
+## Deploy
+
+Push to `immishra13/arc-weld-equipments` (branch `main`); GitHub Pages serves from the repo root.
