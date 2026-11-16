@@ -416,6 +416,75 @@ footer.site h4 { font-family: var(--font-display); color: #fff; font-size: 21px;
 }
 .fab-call:hover { transform: translateY(-3px); background: var(--red-dark); text-decoration: none; }
 
+/* ---------- Buddy — chat assistant (above the Call button) ---------- */
+.fab-buddy {
+  position: fixed; right: 20px; bottom: 92px; z-index: 600;
+  display: flex; align-items: center; gap: 9px;
+  background: var(--white); color: var(--red); font-weight: 800; font-size: 15.5px;
+  padding: 7px 16px 7px 7px; border-radius: 999px; border: 2px solid var(--red);
+  box-shadow: 0 12px 30px rgba(28, 22, 17, .28);
+  transition: transform .18s var(--ease-out), box-shadow .18s;
+  animation: buddyPulse 2.6s ease-in-out infinite;
+}
+.fab-buddy:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(28, 22, 17, .34); }
+.fab-buddy img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+@keyframes buddyPulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(28, 22, 17, .28), 0 0 0 0 rgba(216, 35, 42, .35); }
+  50% { box-shadow: 0 12px 30px rgba(28, 22, 17, .28), 0 0 0 9px rgba(216, 35, 42, 0); }
+}
+.buddy-panel {
+  position: fixed; right: 20px; bottom: 168px; z-index: 700;
+  width: min(380px, calc(100vw - 32px)); height: min(560px, calc(100vh - 200px));
+  background: var(--white); border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: var(--shadow-lg); display: flex; flex-direction: column; overflow: hidden;
+  opacity: 0; visibility: hidden; transform: translateY(14px) scale(.98);
+  transition: opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility .22s;
+}
+.buddy-panel.open { opacity: 1; visibility: visible; transform: none; }
+.buddy-head { background: var(--red); color: #fff; display: flex; align-items: center; gap: 11px; padding: 13px 14px; flex: none; }
+.buddy-head img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255, 255, 255, .8); }
+.buddy-head div { flex: 1; line-height: 1.25; }
+.buddy-head b { font-family: var(--font-display); font-size: 21px; letter-spacing: .03em; display: block; }
+.buddy-head span { font-size: 12.5px; opacity: .92; }
+.buddy-head button { background: rgba(255, 255, 255, .16); border: 0; color: #fff; width: 34px; height: 34px; border-radius: 50%; font-size: 22px; line-height: 1; }
+.buddy-head button:hover { background: rgba(255, 255, 255, .32); }
+.buddy-log { flex: 1; overflow-y: auto; padding: 16px 14px; display: flex; flex-direction: column; gap: 10px; background: var(--paper); }
+.buddy-msg { max-width: 88%; padding: 11px 13px; border-radius: 14px; font-size: 15px; line-height: 1.5; word-wrap: break-word; }
+.buddy-msg.bot { background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; align-self: flex-start; }
+.buddy-msg.user { background: var(--red); color: #fff; border-bottom-right-radius: 4px; align-self: flex-end; }
+.buddy-msg a { color: var(--red); font-weight: 700; }
+.buddy-msg.user a { color: #fff; }
+.buddy-product { background: var(--cream); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 8px; font-size: 14px; }
+.buddy-product + .buddy-product { margin-top: 8px; }
+.buddy-product .buddy-cat { color: var(--red); font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.buddy-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.buddy-actions button, .buddy-actions a {
+  background: var(--red); color: #fff; border: 0; border-radius: 999px; padding: 7px 12px;
+  font-size: 13px; font-weight: 700; text-decoration: none; cursor: pointer;
+}
+.buddy-actions a { background: var(--charcoal); }
+.buddy-actions button:hover, .buddy-actions a:hover { filter: brightness(1.12); text-decoration: none; }
+.buddy-typing span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--muted); margin-right: 4px; animation: buddyBlink 1s infinite; }
+.buddy-typing span:nth-child(2) { animation-delay: .18s; }
+.buddy-typing span:nth-child(3) { animation-delay: .36s; }
+@keyframes buddyBlink { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+.buddy-chips { display: flex; gap: 7px; overflow-x: auto; padding: 10px 12px 4px; background: var(--white); border-top: 1px solid var(--line); flex: none; }
+.buddy-chips button {
+  flex: none; padding: 8px 13px; border-radius: 999px; border: 1.5px solid var(--line);
+  background: var(--paper); font-size: 13.5px; font-weight: 700; color: var(--ink); white-space: nowrap;
+}
+.buddy-chips button:hover { border-color: var(--red); color: var(--red); }
+.buddy-form { display: flex; gap: 8px; padding: 10px 12px; background: var(--white); flex: none; }
+.buddy-form input {
+  flex: 1; padding: 12px 15px; border-radius: 999px; border: 1.5px solid var(--line);
+  font: inherit; font-size: 15px; background: var(--paper); outline: none; min-width: 0;
+}
+.buddy-form input:focus { border-color: var(--red); background: #fff; }
+.buddy-form button { width: 46px; height: 46px; flex: none; border-radius: 50%; border: 0; background: var(--red); color: #fff; font-size: 18px; }
+.buddy-form button:hover { background: var(--red-dark); }
+.buddy-foot { padding: 0 14px 11px; font-size: 12px; color: var(--muted); background: var(--white); flex: none; }
+.buddy-foot a { color: var(--red); font-weight: 700; }
+
 /* ---------- Reveal on scroll (subtle, Mage-UI section reveal) ---------- */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
 .reveal.in { opacity: 1; transform: none; }
@@ -456,6 +525,10 @@ footer.site h4 { font-family: var(--font-display); color: #fff; font-size: 21px;
   .about-badge b { font-size: 24px; }
   .fab-call span { display: none; }
   .fab-call { padding: 15px; border-radius: 50%; }
+  .fab-buddy span { display: none; }
+  .fab-buddy { padding: 6px; border-radius: 50%; }
+  .fab-buddy img { width: 46px; height: 46px; }
+  .buddy-panel { right: 16px; bottom: 158px; }
   .modal-body { padding: 20px; }
   .modal-head img { height: 190px; }
   .cat-head { flex-direction: column; align-items: flex-start; gap: 12px; }

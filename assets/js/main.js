@@ -260,6 +260,7 @@
     }
     html += '<div class="modal-cta">' +
       '<a class="btn btn-red" href="#quote" data-quote="' + p.name + '">Ask for a quote <span class="arrow">→</span></a>' +
+      '<a class="btn btn-outline" href="assets/brochures/' + p.id + '.pdf" download="Arc-Weld-' + p.id + '-brochure.pdf">↓ Download Brochure (PDF)</a>' +
       '<a class="btn btn-outline" href="tel:+912228591639">Call 022 2859 1639</a>' +
       '<a class="btn btn-outline" href="mailto:info@arcweld.in?subject=' + encodeURIComponent("Enquiry — " + p.name) + '">Email about this machine</a>' +
       '</div></div>';
@@ -279,6 +280,7 @@
     document.body.style.overflow = "";
     if (lastFocus) lastFocus.focus();
   }
+  window.openProductById = openProduct; /* used by Buddy chat */
   backdrop.addEventListener("click", function (e) { if (e.target === backdrop) closeProduct(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeProduct(); });
 

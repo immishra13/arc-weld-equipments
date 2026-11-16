@@ -485,6 +485,32 @@
 <!-- Floating call button -->
 <a class="fab-call" href="tel:+912228591639" aria-label="Call Arc Weld now">☎ <span>Call Now</span></a>
 
+<!-- Buddy — chat assistant (above the Call button) -->
+<button class="fab-buddy" id="buddy-fab" type="button" aria-label="Chat with Buddy, Arc Weld assistant" aria-expanded="false">
+  <img src="assets/images/buddy.webp" alt="Buddy — Arc Weld assistant">
+  <span>Buddy</span>
+</button>
+<div class="buddy-panel" id="buddy-panel" role="dialog" aria-label="Chat with Buddy">
+  <div class="buddy-head">
+    <img src="assets/images/buddy.webp" alt="Buddy">
+    <div><b>Buddy</b><span>Arc Weld assistant · Replies instantly</span></div>
+    <button id="buddy-close" type="button" aria-label="Close chat">×</button>
+  </div>
+  <div class="buddy-log" id="buddy-log" aria-live="polite"></div>
+  <div class="buddy-chips">
+    <button type="button" data-buddy-chip="ARC 400 specs">ARC 400 specs</button>
+    <button type="button" data-buddy-chip="What is the price?">Price / Quotation</button>
+    <button type="button" data-buddy-chip="What is the warranty?">Warranty?</button>
+    <button type="button" data-buddy-chip="Where are you located?">Address &amp; hours</button>
+    <button type="button" data-buddy-chip="Plasma cutting machines">Plasma machines</button>
+  </div>
+  <form class="buddy-form" id="buddy-form">
+    <input id="buddy-input" type="text" placeholder="Ask Buddy about a machine…" autocomplete="off" aria-label="Ask Buddy">
+    <button type="submit" aria-label="Send">➤</button>
+  </form>
+  <div class="buddy-foot">Buddy answers only from Arc Weld's catalogue — prices are quoted on request. For a human, call <a href="tel:+912228591639">022 2859 1639</a>.</div>
+</div>
+
 <!-- Product modal -->
 <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-label="Product details">
   <div class="modal" id="modal-body"></div>
@@ -492,5 +518,6 @@
 
 <script src="assets/js/products.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/buddy.js"></script>
 </body>
 </html>
